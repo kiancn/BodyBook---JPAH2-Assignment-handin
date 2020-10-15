@@ -41,21 +41,22 @@ public class DummyData
         Organ brain = new Organ();
         brain.setName("Brain");
         brain.setDescription("Blob");
+        brain.setLimbs(Arrays.asList(limb1A));
         Organ savedBrain = access.getOrganRepository().save(brain);
 
         Organ heart = new Organ();
         heart.setName("Heart");
         heart.setDescription("Thumper");
+        heart.setLimbs(Arrays.asList(limb1A));
         Organ savedHeart = access.getOrganRepository().save(heart);
 
         limb1A.setOrganDependencies(Arrays.asList(heart));
         limb1B.setOrganDependencies(Arrays.asList(brain));
         Limb savedLimb1A = access.getLimbRepository().save(limb1A);
-
-
-
         Limb saveLimb1B = access.getLimbRepository().save(limb1B);
 
-        body1.setLimbs(Arrays.asList(savedLimb1A,saveLimb1B));
+        save1.setLimbs(Arrays.asList(savedLimb1A,saveLimb1B));
+
+        access.getBodyRepository().save(save1);
     }
 }
