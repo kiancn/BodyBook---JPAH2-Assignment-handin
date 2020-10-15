@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang='en' xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link th:href="@{/styles/bodybook.css}" rel="stylesheet">
+
+    <title>BodyBook</title>
+</head>
+<body>
+<div class="container-fluid mt-4">
+
+    <!-- top bar area -->
+    <div th:replace="header.html :: navigation"></div>
+
+    <div class="jumbotron">
+        <div class="text-center">
+            <h1>
+                BodyBook
+            </h1>
+            <h2>Come on, Buddy!</h2>
+            <h3 th:text="${'We already have a body count of ' + bodyCount} "></h3>
+            <h4>Join the devastation of privacy!</h4>
+            <h5><a href="/registerNewBody">Sell out a some body NOW</a></h5>
+        </div>
+
+        <hr>
+
+        <div>
+        <h5 style="margin-left: 450px">All the bodies</h5>
+        <table class="table-sm" style="margin-left: 370px">
+            <tr>
+                <th>Body ID</th>
+                <th>Body Name</th>
+                <th>Body Description</th>
+                <th>Editing Link</th>
+            </tr>
+            <tr th:each="body :${bodies}">
+                <td th:text="${body.getId()}"></td>
+                <td th:text="${body.getName()}"></td>
+                <td th:text="${body.getDescription()}"></td>
+                <td>
+                    <form name="" action="/editSpecificBody" method="post" >
+                    <input type="hidden" name="bodyID" th:value="${body.getId()}">
+                    <input class="button" type="submit" value="edit"></form>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</div>
+
+
+</body>
+</html>

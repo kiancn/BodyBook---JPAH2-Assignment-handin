@@ -1,0 +1,188 @@
+.hide {
+    display: none;
+}
+
+.vertical-center-50 {
+    min-height: 50%; /* Fallback for browsers do NOT support vh unit  */
+    min-height: 50vh; /* These two lines are counted as one :-)       */
+
+    display: flex;
+    align-items: center;
+}
+
+
+body {
+    background-image: url("https://creatureartteacher.com/wp-content/uploads/2016/03/Gesture-drawing-800x600.jpg");
+}
+
+/* table layout */
+.input-text-jr {
+    text-align: right;
+}
+
+.input-url-field {
+    width: 280px;
+}
+
+.big-checkbox {
+    /* Double-sized Checkboxes */
+    -ms-transform: scale(2); /* IE */
+    -moz-transform: scale(2); /* FF */
+    -webkit-transform: scale(2); /* Safari and Chrome */
+    -o-transform: scale(2); /* Opera */
+    padding: 10px;
+
+    margin-left: 10px;
+}
+
+input:active {
+    background-color: lightskyblue;
+
+    transition: 80ms;
+}
+
+input:focus {
+    background-color: dodgerblue;
+
+    color: #e9ecef;
+
+    transition: 200ms;
+}
+
+/* General page layout - buttons */
+
+.button {
+    background: transparent;
+    color: black;
+    outline: none;
+    border: 1px solid black;
+
+    padding: 2px 20px;
+
+    transition: 1250ms ease-out;
+}
+
+.button:hover {
+    background: #63f030;
+    color: azure;
+
+    outline: none;
+    padding: 2px 20px;
+
+    transition: all 150ms ease-in;
+}
+
+.button-borderless {
+    background: #e9ecef;
+    color: black;
+    outline: none;
+    border: none;
+
+    padding: 2px 20px;
+
+    transition: 1250ms ease-out;
+}
+
+.button-borderless:hover {
+    background: #c19473;
+    color: #000000;
+
+    outline: none;
+
+    padding: 2px 20px;
+
+    transition: all 150ms ease-in;
+}
+
+.button-sm-transparent {
+    background: transparent;
+    color: black;
+    outline: none;
+    border: none;
+
+    padding: 3px 8px 3px 15px;
+
+    transition: 750ms ease-out;
+}
+
+.button-sm-transparent:hover {
+    background: transparent;
+    color: #000000;
+    outline: none;
+    padding: 3px 15px 3px 8px;
+    transition: all 250ms ease-in;
+}
+
+/* navbar stuff */
+
+.navbar {
+    background: #e9ecef;
+    padding: 0px;
+}
+
+.navbar-group-bordered {
+    border-style: inset;
+    border-width: 1px;
+}
+
+.dropdown {
+    transition: all 150ms ease-in;
+}
+
+.button-navbar {
+    background: #e9ecef;
+    color: black;
+    outline: none;
+    border: none;
+
+    padding: 3px 15px 3px 15px;
+
+    transition: 1250ms ease-out;
+
+    font-size:16px;
+}
+
+.button-navbar:hover {
+    background: #c19473;
+    color: #000000;
+
+    outline: none;
+
+    padding: 3px 15px 3px 15px;
+
+    transition: all 150ms ease-in;
+}
+
+.button-navbar-arrow {
+    background: #e9ecef;
+    color: black;
+    outline: none;
+    border: none;
+
+    padding: 3px 8px 3px 15px;
+
+    transition: 750ms ease-out;
+}
+
+.button-navbar-arrow:hover {
+    background: #c19473;
+    color: #000000;
+    outline: none;
+    padding: 3px 15px 3px 8px;
+    transition: all 250ms ease-in;
+}
+
+.logo-shading-orange{
+    transition: all 1250ms linear;
+}
+
+.logo-shading-orange:hover{
+    filter: invert(60%) sepia(49%) saturate(2848%) hue-rotate(346deg) brightness(101%) contrast(83%);
+    transition: all 6657ms linear;
+}
+
+.dropdown-menu{ /* complements BS4 class of same name */
+    background:  #e9ecef;
+}
+
+

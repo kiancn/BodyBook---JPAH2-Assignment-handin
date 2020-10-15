@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang='en' xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link th:href="@{/styles/bodybook.css}" rel="stylesheet">
+
+    <title>BodyBook :: Edit Body</title>
+</head>
+<body>
+
+<div class="container-fluid mt-4">
+    <!-- top bar area -->
+    <div th:replace="header.html :: navigation"></div>
+
+    <div class="jumbotron pt-2">
+        <h1>Edit body</h1>
+
+        <form name="updatedBody" method="post" action="/updateBody">
+            <input type="hidden" name="bodyID" th:value="${body.getId()}">
+            <table class="table-sm">
+                <tr>
+                    <th><h5>Start new body</h5></th>
+                </tr>
+                <tr>
+                    <th>Body Name:</th>
+                    <td><input type="text" name="name" th:value="${body.getName()}"></td>
+                </tr>
+                <tr>
+                    <th>Description:</th>
+                    <td><input type="text" name="description" th:value="${body.getDescription()}"></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><img th th:src="@{/images/LOGO-NAV-BRAND.png}" alt="Body" class="logo-shading-orange" height="30px"><input
+                            type="submit" name="submit" class="button" value="Update body"></td>
+                </tr>
+            </table>
+        </form>
+
+
+        <th:block th:each="limb :${body.getLimbs()}">
+            <form name="updateLimb" method="post" action="/updateLimb">
+                <input type="hidden" name="bodyID" th:value="${body.getId()}">
+                <input type="hidden" name="limbID" th:value="${limb.getId()}">
+                <table class="table-sm" style="margin-left: 200px">
+
+                    <tr>
+                    <tr>
+                        <th colspan="2" th:text="'Limb ID: ' + ${limb.getId()}"></th>
+                    </tr>
+                    <th>Limb name</th>
+                    <td><input type="text" th:value="${limb.getName()}" name="limbName"></td>
+                    </tr>
+                    <tr>
+                        <th>Limb Description</th>
+                        <td><input type="text" th:value="${limb.getDescription()}" name="limbDescription"></td>
+                    </tr>
+                    <tr>
+                        <td><img th th:src="@{/images/LOGO-NAV-BRAND.png}" alt="Body" class="logo-shading-orange" height="30px"><input
+                                type="submit" name="submit" class="button" value="Update Limb"></td>
+                    </tr>
+                </table>
+            </form>
+
+
+            <div  th:each="organ : ${limb.getOrganDependencies()}">
+                <form name="updateOrgan" action="/updateOrgan" method="post">
+                    <input type="hidden" name="bodyID" th:value="${body.getId()}">
+                    <input type="hidden" name="limbID" th:value="${limb.getId()}">
+                    <input type="hidden" name="organID" th:value="${organ.getId()}">
+                    <table class="table-sm" style="margin-left: 400px">
+                        <tr>
+                            <th colspan="2" th:text="'Organ ID:' + ${organ.getId()}"></th>
+                        </tr>
+                        <tr>
+                            <th>Organ Name</th>
+                            <td><input type="text" name="organName" th:value="${organ.getName()}"></td>
+                        </tr>
+                        <tr>
+                            <th>Organ Description</th>
+                            <td><input type="text" name="organDescription" th:value="${organ.getDescription()}"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <img th th:src="@{/images/LOGO-NAV-BRAND.png}" alt="Body" class="logo-shading-orange" height="30px"><input
+                                type="submit" name="submit" class="button" value="Update Organ">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+            <form name="createOrgan" method="post" action="/createOrgan">
+                <input type="hidden" name="bodyID" th:value="${body.getId()}">
+                <input type="hidden" name="limbID" th:value="${limb.getId()}">
+                <table class="table-sm" style="background: #ecb1e8; margin-left: 500px">
+                    <tr>
+                        <th>Organ Name</th>
+                        <td><input type="text" name="organName"></td>
+                    </tr>
+                    <tr>
+                        <th>Organ Description</th>
+                        <td><input type="text" name="organDescription"></td>
+                    </tr>
+                    <tr>
+                        <td><img th th:src="@{/images/LOGO-NAV-BRAND.png}" alt="Body" class="logo-shading-orange" height="30px"><input
+                                type="submit" name="submit" class="button" value="Add new Organ"></td>
+                    </tr>
+                </table>
+            </form>
+        </th:block>
+
+
+        <form name="createLimb" method="post" action="/createLimb">
+            <input type="hidden" name="bodyID" th:value="${body.getId()}">
+
+            <table class="table-sm" style="background: darkseagreen; margin-left: 250px">
+
+                <tr>
+                    <th>Limb Name</th>
+                    <td><input type="text" name="limbName"></td>
+                </tr>
+                <tr>
+                    <th>Limb Description</th>
+                    <td><input type="text" name="limbDescription"></td>
+                </tr>
+                <tr>
+                    <td><img th th:src="@{/images/LOGO-NAV-BRAND.png}" alt="Body" class="logo-shading-orange" height="30px"><input
+                            type="submit" name="submit" class="button" value="Add new Limb"></td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

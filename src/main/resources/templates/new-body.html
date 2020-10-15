@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang='en' xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link th:href="@{/styles/bodybook.css}" rel="stylesheet">
+
+    <title>BodyBook :: Register new body now!</title>
+</head>
+<body>
+<div class="container-fluid mt-4">
+<!-- top bar area -->
+<div th:replace="header.html :: navigation"></div>
+
+    <div class="jumbotron pt-2">
+        <h1>New Body!</h1>
+
+        <form name="newBody" method="post" action="/saveNewBody">
+        <table class="table">
+            <tr><th><h5>Start new body</h5></th></tr>
+            <tr>
+                <th>Body Name:</th>
+                <td><input type="text" name="name"></td>
+            </tr>
+            <tr>
+                <th>Description:</th>
+                <td><input type="text" name="description"></td>
+            </tr>
+            <tr>
+                <th><img th:src="@{/images/LOGO-NAV-BRAND.png}" alt="Body" class="logo-shading-orange"></th>
+                <td><input type="submit" name="submit" class="button" value="Create body NOW"></td>
+            </tr>
+            <tr><th colspan="2">Submit for creation to continue to deliver data on this body.</th></tr>
+        </table>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>
