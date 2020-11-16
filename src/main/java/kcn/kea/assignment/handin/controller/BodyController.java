@@ -34,7 +34,7 @@ public class BodyController
             @RequestParam Optional<String> description,
             Model model)
     {
-        if(name.isEmpty() || description.isEmpty()){return "redirect:/registerNewBody";}
+        if(!name.isPresent() || !description.isPresent()){return "redirect:/registerNewBody";}
 
         Body newBody = new Body();
         newBody.setName(name.get());
@@ -77,8 +77,8 @@ public class BodyController
         Optional<Body> byId = access.getBodyRepository().findById(bodyID);
         if(byId.isPresent())
         {
-            byId.get().setName(name.isEmpty() ? byId.get().getName() : name.get());
-            byId.get().setDescription(description.isEmpty() ? byId.get().getDescription() : description.get());
+            byId.get().setName(!name.isPresent() ? byId.get().getName() : name.get());
+            byId.get().setDescription(!description.isPresent() ? byId.get().getDescription() : description.get());
             Body savedBody = access.getBodyRepository().save(byId.get());
             model.addAttribute("body", savedBody);
             return editBody(model);
@@ -127,8 +127,8 @@ public class BodyController
 
         Limb limb = new Limb();
 
-        limb.setName(limbName.isEmpty() ? "Unnamed Limb" : limbName.get());
-        limb.setDescription(limbDescription.isEmpty() ? "No Description" : limbDescription.get());
+        limb.setName(!limbName.isPresent() ? "Unnamed Limb" : limbName.get());
+        limb.setDescription(!limbDescription.isPresent() ? "No Description" : limbDescription.get());
 
         Optional<Body> bodyById = access.getBodyRepository().findById(bodyID);
         if(bodyById.isPresent())
@@ -175,8 +175,8 @@ public class BodyController
             limbs.add(limbByID.get());
 
             organ.setLimbs(limbs);
-            organ.setName(organName.isEmpty()?"Organ Not Named":organName.get());
-            organ.setDescription(organDescription.isEmpty()?"Organ has no description":organDescription.get());
+            organ.setName(!organName.isPresent()?"Organ Not Named":organName.get());
+            organ.setDescription(!organDescription.isPresent()?"Organ has no description":organDescription.get());
 
             Organ savedOrgan = access.getOrganRepository().save(organ);
             limbByID.get().getOrganDependencies().add(savedOrgan);
