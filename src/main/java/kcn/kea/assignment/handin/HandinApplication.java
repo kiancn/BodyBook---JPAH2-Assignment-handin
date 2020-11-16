@@ -10,6 +10,7 @@ public class HandinApplication
     public static void main(String[] args)
     {
         SpringApplication.run(HandinApplication.class, args);
+        System.out.println("Message to log/command line. Body Book started.");
     }
 
 }
