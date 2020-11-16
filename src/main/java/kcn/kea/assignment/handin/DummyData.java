@@ -20,7 +20,7 @@ public class DummyData
 
     public void GenerateDummyDate()
     {
-        /* */
+        /* Random comment for deletion */
 
         Body body1 = new Body();
         body1.setName("Hans Peter");
