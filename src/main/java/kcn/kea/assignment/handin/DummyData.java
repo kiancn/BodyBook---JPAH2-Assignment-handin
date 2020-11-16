@@ -20,6 +20,8 @@ public class DummyData
 
     public void GenerateDummyDate()
     {
+        /**/
+
         Body body1 = new Body();
         body1.setName("Hans Peter");
         body1.setDescription("Middel, 190cm foroverbøjet");
