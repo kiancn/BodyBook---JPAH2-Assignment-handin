@@ -15,7 +15,7 @@
     <description>Assigment for KEA demonstrating implementation of H" and Data JPA in</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>8</java.version>
     </properties>
 
     <dependencies>
