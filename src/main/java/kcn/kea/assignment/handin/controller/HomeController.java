@@ -16,7 +16,7 @@ public class HomeController
     @Autowired
     private BodyRepository bodyRepository;
 
-    @GetMapping("/home")
+    @GetMapping("/")
     public String home(Model model){
 
 //        if(bodyRepository.count()<1){
